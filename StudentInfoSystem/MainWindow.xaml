@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentInfoSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="Студентска информационна система" Height="450" Width="800">
+    <Grid x:Name="MainGrid">
+        <GroupBox x:Name="gbPersonalData" Header="Лични данни" Height="140" VerticalAlignment="Top" Width="760">
+            <Grid x:Name="PersonalData">
+                <Label x:Name="lblFirstName" Content="Име:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" Margin="5,5,0,0"/>
+                <TextBox x:Name="txtFirstName" Text="{Binding FirstName}" HorizontalAlignment="Left" Margin="110,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" Height="30"/>
+                <Label x:Name="lblMiddleName" Content="Презиме:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" Margin="5,40,0,0"/>
+                <TextBox x:Name="txtMiddleName" Text="{Binding MiddleName}" HorizontalAlignment="Left" Margin="110,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" Height="30"/>
+                <Label x:Name="lblLastName" Content="Фамилия:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" Margin="5,75,0,0"/>
+                <TextBox x:Name="txtLastName" Text="{Binding LastName}" HorizontalAlignment="Left" Margin="110,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" Height="30"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="gbStudentInformation" Header="Студентска информация" Height="270" VerticalAlignment="Top" Width="760" Margin="0,150,0,0">
+            <Grid x:Name="StudentInformation" DataContext="{Binding Path=Student}">
+                <Label x:Name="lblFaculty" Content="Факултет:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" Margin="5,30,0,0"/>
+                <TextBox x:Name="txtFaculty" Text="{Binding Path=Faculty}" HorizontalAlignment="Left" Margin="110,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" Height="30"/>
+                <Label x:Name="lblSpeciality" Content="Специалност:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" Margin="5,65,0,0"/>
+                <TextBox x:Name="txtSpeciality" Text="{Binding Path=Speciality}" HorizontalAlignment="Left" Margin="110,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" Height="30"/>
+                <Label x:Name="lblDegree" Content="ОКС:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" Margin="5,100,0,0"/>
+                <TextBox x:Name="txtDegree" Text="{Binding Path=Degree}" HorizontalAlignment="Left" Margin="110,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" Height="30"/>
+                <Label x:Name="lblStatus" Content="Статус:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" Margin="5,135,0,0"/>
+                <ListBox x:Name="txtStatus" ItemsSource="{Binding StudStatusChoices}" HorizontalAlignment="Left" Margin="110,135,0,0" VerticalAlignment="Top" Width="280" Height="30">
+                    
+                </ListBox>
+                <Label x:Name="lblFacultyNumber" Content="Фак. номер:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" Margin="5,170,0,0"/>
+                <TextBox x:Name="txtFacultyNumber" Text="{Binding Path=FacultyNumber}" HorizontalAlignment="Left" Margin="110,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" Height="30"/>
+                <Label x:Name="lblCourse" Content="Курс:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="30" Margin="610,30,0,0"/>
+                <TextBox x:Name="txtCourse" Text="{Binding Path=Course}" HorizontalAlignment="Left" Margin="670,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Height="30"/>
+                <Label x:Name="lblStream" Content="Поток:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="30" Margin="610,65,0,0"/>
+                <TextBox x:Name="txtStream" Text="{Binding Path=Stream}" HorizontalAlignment="Left" Margin="670,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Height="30"/>
+                <Label x:Name="lblGroup" Content="Група:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="30" Margin="610,100,0,0"/>
+                <TextBox x:Name="txtGroup" Text="{Binding Path=Group}" HorizontalAlignment="Left" Margin="670,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Height="30"/>
+                <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="410,170,0,0" VerticalAlignment="Top" Width="70" Height="30" Click="btnClear_Click"/>
+                <Button x:Name="btnPopulateModel" Content="Populate" HorizontalAlignment="Left" Margin="490,170,0,0" VerticalAlignment="Top" Width="70" Height="30" Click="btnPopulateModel_Click"/>
+                <Button x:Name="btnDeactivateControls" Content="Deactivate" HorizontalAlignment="Left" Margin="570,170,0,0" VerticalAlignment="Top" Width="70" Height="30" Click="btnDeactivateControls_Click"/>
+                <Button x:Name="btnActivateControls" Content="Activate" HorizontalAlignment="Left" Margin="650,170,0,0" VerticalAlignment="Top" Width="70" Height="30" Click="btnActivateControls_Click"/>
+                <Button x:Name="btnEnterUser" Content="Enter user" HorizontalAlignment="Left" Margin="410,210,0,0" VerticalAlignment="Top" Width="70" Height="30" Click="btnEnterUser_Click"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

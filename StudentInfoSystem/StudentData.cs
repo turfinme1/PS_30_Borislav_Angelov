@@ -1,37 +1,39 @@
-﻿using System;
+﻿using StudentInfoSystem.Enums;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentInfoSystem
 {
     public class StudentData
     {
-        private List<Student> TestStudents;
+        public List<Student>? TestStudents { get; private set; }
 
         public StudentData()
         {
             TestStudents = new List<Student>();
-            TestStudents.Add(exampleStudent());
+
+            TestStudents.Add(new Student()
+            {
+                FirstName = "Ivan",
+                MiddleName = "Georgiev",
+                LastName = "Ivanov",
+                Speciality = "Computer and software engineering",
+                Faculty = "FCST",
+                Course = 3,
+                FacultyNumber = "121219000",
+                Group = 30,
+                Degree = Degree.Професионално,
+                Status = EducationStatus.Редовен,
+                Stream = 9
+            });
         }
 
-        public List<Student> getStudents()
+        public bool IsThereStudent(string facNum)
         {
-            return this.TestStudents;
-        }
+            StudentInfoContext context = new StudentInfoContext();
 
-        private void setStudents(List<Student> students)
-        {
-            this.TestStudents = students;
-        }
-
-        private Student exampleStudent()
-        {
-            Student student = new Student("Tisho", "Stefanov", "Stefanov", "ФКСТ", "КСИ", "Бакалавър", "Заверил",
-                "121212000", 3, 9, 30);
-
-            return student;
+            Student? result = context.Students.FirstOrDefault(s => s.FacultyNumber == facNum);
+            return result != null;
         }
     }
 }
